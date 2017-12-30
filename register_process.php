@@ -25,27 +25,23 @@
 	$salt = "lcmqwbvudbkvd894923";
 	$password = crypt($password, $salt);
 
-	$str = "INSERT INTO `passenger` VALUES ('$name',$age,'$address', '$email')";
+	mysqli_query($conn, 'START TRANSACTION');
 
-	if(mysqli_query($conn,$str)===TRUE)
+	$str = "INSERT INTO `passenger` VALUES ('$name',$age,'$address', '$email')";
+	$q_passenger = mysqli_query($conn,$str);
+	$str = "INSERT INTO `user` VALUES('$password','$email','normal')";
+	$q_user = mysqli_query($conn,$str);
+
+	if($q_passenger && $q_user)
 	{
-		$str = "INSERT INTO `user` VALUES('$password','$email','normal')";
-		if(mysqli_query($conn,$str)===TRUE)
-		{
-			header("location: success.php");
-		}
-		else
-		{
-			//die(mysqli_error($conn));
-			header('location:register.php?error');
-		}
+			mysqli_query($conn, "COMMIT");		
+			header("location: login.php");
 	}
 	else
 	{
-		//die(mysqli_error($conn));
+		mysqli_query($conn, "ROLLBACK");
 		header('location:register.php?error');
 	}
 
 	mysqli_close($conn);
-	//header('location:register.php?error');
 	?>
