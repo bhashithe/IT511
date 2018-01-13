@@ -20,4 +20,9 @@
 	$votes = $row['votes'];
 
 	echo $votes;
+
+	$email = $_SESSION['user'];
+
+	$str = "INSERT INTO logs(`email`,`post_id`) VALUES ('$email',$postid)";
+	$result = mysqli_query($conn, $str) or die("error");
 ?>
