@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2018 at 05:17 AM
+-- Generation Time: Jan 13, 2018 at 06:43 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -38,6 +38,30 @@ CREATE TABLE IF NOT EXISTS `dummy` (
 INSERT INTO `dummy` (`name`, `age`) VALUES
 ('Kamal', 25),
 ('Sunil', 24);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE IF NOT EXISTS `logs` (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `times` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`log_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`log_id`, `email`, `post_id`, `times`) VALUES
+(1, 'sunil@mail.com', 1, '2018-01-13 05:39:54'),
+(2, 'sunil@mail.com', 2, '2018-01-13 05:40:36'),
+(3, 'sunil@mail.com', 1, '2018-01-13 05:41:46'),
+(4, 'kamal@mail.com', 1, '2018-01-13 05:42:16');
 
 -- --------------------------------------------------------
 
@@ -81,8 +105,8 @@ CREATE TABLE IF NOT EXISTS `post` (
 --
 
 INSERT INTO `post` (`post_id`, `title`, `votes`) VALUES
-(1, 'When does the Fort - Kandy train leave fort', 11),
-(2, 'How much is a ticket for colombo', 8);
+(1, 'When does the Fort - Kandy train leave fort', 10),
+(2, 'How much is a ticket for colombo', 9);
 
 -- --------------------------------------------------------
 
