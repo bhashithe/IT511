@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2017 at 07:38 AM
+-- Generation Time: Jan 13, 2018 at 05:17 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -66,6 +66,27 @@ INSERT INTO `passenger` (`name`, `age`, `address`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `post`
+--
+
+CREATE TABLE IF NOT EXISTS `post` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `votes` int(11) NOT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`post_id`, `title`, `votes`) VALUES
+(1, 'When does the Fort - Kandy train leave fort', 11),
+(2, 'How much is a ticket for colombo', 8);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ticket`
 --
 
@@ -77,17 +98,16 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `number` int(11) NOT NULL,
   PRIMARY KEY (`ticket_id`),
   KEY `train_id` (`train_id`,`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `ticket`
 --
 
 INSERT INTO `ticket` (`ticket_id`, `type`, `train_id`, `email`, `number`) VALUES
-(1, 'second', 3, 'sunil@mail.com', 1),
 (2, 'first', 4, 'john@mail.com', 3),
-(3, 'second', 2, 'sunil@mail.com', 1),
-(4, 'third', 1, 'kamal@mail.com', 6);
+(4, 'third', 1, 'kamal@mail.com', 6),
+(10, 'second', 3, 'sunil@mail.com', 2);
 
 -- --------------------------------------------------------
 
